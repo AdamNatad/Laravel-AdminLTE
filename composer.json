@@ -1,6 +1,6 @@
 {
   "name": "adamnatad/laravel-adminlte",
-  "description": "Easy AdminLTE integration with Laravel by Adam Natad",
+  "description": "AdminLTE v3 integration for Laravel by Adam Natad",
   "keywords": ["laravel", "adminlte", "admin", "administrator"],
   "license": "MIT",
   "authors": [
