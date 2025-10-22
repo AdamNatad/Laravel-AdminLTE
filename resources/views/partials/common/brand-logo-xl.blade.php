@@ -13,6 +13,9 @@
         class="navbar-brand logo-switch {{ config('adminlte.classes_brand') }}"
     @else
         class="brand-link logo-switch {{ config('adminlte.classes_brand') }}"
+        @if(config('adminlte.nt_top_sidebar_hexbg_color_use'))
+            style="background-color: {{ config('adminlte.nt_top_sidebar_hexbg_color_hex') }} !important;"
+        @endif
     @endif>
 
     {{-- Small brand logo --}}

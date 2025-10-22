@@ -13,6 +13,9 @@
         class="navbar-brand {{ config('adminlte.classes_brand') }}"
     @else
         class="brand-link {{ config('adminlte.classes_brand') }}"
+        @if(config('adminlte.nt_top_sidebar_hexbg_color_use'))
+            style="background-color: {{ config('adminlte.nt_top_sidebar_hexbg_color_hex') }} !important;"
+        @endif
     @endif>
 
     {{-- Small brand logo NT IMPROVED Original Opacity: .8--}}

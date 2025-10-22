@@ -251,6 +251,37 @@ return [
     // Fixed Footer Main App Logo
     'nt_install_app_logo' => '/images/NatadTechLogoWhite.png',
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | NatadTech Sidebar Customization
+    |--------------------------------------------------------------------------
+    |
+    | Allows optional hex color override for the sidebar background.
+    |
+    */
+    'nt_top_sidebar_hexbg_color_use' => true,
+    'nt_top_sidebar_hexbg_color_hex' => '#247555',
+
+    'nt_sidebar_hexbg_color_use' => true,
+    'nt_sidebar_hexbg_color_hex' => '#247555',
+
+    // New: active & hover button color customization
+    'nt_sidebar_button_color_use' => true,
+    'nt_sidebar_button_color_active' => '#247555', // active highlight
+    'nt_sidebar_button_color_hover'  => '#494E53', // hover state
+
+    // New optional text/icon colors
+    'nt_sidebar_button_text_color_active' => '#ffffff',
+    'nt_sidebar_button_text_color_hover'  => '#ffffff',
+    
+    'nt_sidebar_button_icon_color_active' => '#ffffff',
+    'nt_sidebar_button_icon_color_hover'  => '#ffffff',
+
+
+    
+
     // PWA Install Button
     'nt_install_app_pwa_url_enabled' => true,
     'nt_install_app_pwa_url_classes' => 'btn btn-light install-btn text-primary',
