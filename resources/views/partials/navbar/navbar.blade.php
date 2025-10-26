@@ -154,6 +154,13 @@
             @endif
         @endif
 
+        {{-- Right sidebar toggler link --}} 
+        {{-- MOVED TO FOOTER AS FLOATING BUTTON
+        @if($layoutHelper->isRightSidebarEnabled())
+            @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
+        @endif
+         --}}
+         
         {{-- Add this conditional to show "Login" button to non-logged-in users and hide "Login" button on error pages--}}
         @if(!Auth::check() && !app()->isDownForMaintenance() && !app()->runningUnitTests() && !isset($exception))
             <li class="nav-item">
@@ -169,11 +176,6 @@
                     </a>
                 @endif
             </li>
-        @endif
-
-        {{-- Right sidebar toggler link --}}
-        @if($layoutHelper->isRightSidebarEnabled())
-            @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
         @endif
     </ul>
 </nav>

@@ -394,6 +394,25 @@ return [
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
     'right_sidebar_scrollbar_auto_hide' => 'l',
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Floating Right Sidebar Button
+    |--------------------------------------------------------------------------
+    |
+    | Custom settings for the floating quick access button that toggles
+    | the control sidebar.
+    |
+    */
+    
+    'right_sidebar_floating' => true, // Show or hide floating button
+    'right_sidebar_floating_color' => '#247555', // Bootstrap bg-* class or HEX color
+    'right_sidebar_floating_icon' => 'fas fa-sliders-h', // Font Awesome icon class
+    'right_sidebar_floating_icon_color' => '#ffffff', // Icon color (HEX or Bootstrap text-* class)
+    'right_sidebar_floating_icon_image' => null, // Optional: image path (overrides icon)
+    'right_sidebar_floating_zindex' => 1020, // Layering control (below modals)
+    
+
     /*
     |--------------------------------------------------------------------------
     | URLs

@@ -202,6 +202,81 @@ return [
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
+
+    /* Added Code By Adam Natad */
+
+    //Enable Login Button
+    'nt_login_navbar_enable' => true,
+
+    // Manually handle text color
+    'nt_topnav_textcolor_handle' => true,
+    'nt_topnav_textcolor_color' => '#CCCECF',
+    'nt_topnav_textcolor_hover' => '#FFFFFF',
+    
+    /* Mobile Logo 1024x199 24BPP SVG */
+    'nt_navbar_mobile_logo' => '/images/NatadTechBanner.svg',
+
+    //Enable Mobile Text - set to false to use image
+    'nt_navbar_mobile_text' => true, 
+
+    /*Limit Size Characters
+    * 1,2,3
+    * 1 = best for below 10 chars including spaces
+    * 2 = best for below 13 chars including spaces
+    * 3 = best for below 23 chars including spaces
+    */
+    'nt_navbar_mobile_text_size' => 1, 
+    
+    'nt_navbar_mobile_text_label' => 'NatadTech', 
+    'nt_navbar_mobile_text_color' => '#CCCECF',
+    'nt_navbar_mobile_text_hover_color' => '#FFFFFF',
+
+    // BG Color of Top Nav
+    'nt_navbar_hexbg_color_use' => false,
+    'nt_navbar_hexbg_color_hex' => '#343A40',
+
+    'nt_notification_dropdown_header_classes' => 'bg-dark nt-non-selectable',
+    'nt_footer_classes' => 'bg-dark',
+
+    /* Footer Install Banner */
+    // Fixed Footer Label Text
+    'nt_install_app_footer_label' => 'NatadTech - Making Things Simple',
+
+    // Fixed Footer Background Color
+    'nt_install_app_footer_bgcolor' => '#007bff',
+
+    // Fixed Footer Main App Logo
+    'nt_install_app_logo' => '/images/NatadTechLogoWhite.png',
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | NatadTech Sidebar Customization
+    |--------------------------------------------------------------------------
+    |
+    | Allows optional hex color override for the sidebar background.
+    |
+    */
+    'nt_top_sidebar_hexbg_color_use' => true,
+    'nt_top_sidebar_hexbg_color_hex' => '#247555',
+
+    'nt_sidebar_hexbg_color_use' => true,
+    'nt_sidebar_hexbg_color_hex' => '#247555',
+
+    // New: active & hover button color customization
+    'nt_sidebar_button_color_use' => true,
+    'nt_sidebar_button_color_active' => '#247555', // active highlight
+    'nt_sidebar_button_color_hover'  => '#494E53', // hover state
+
+    // New optional text/icon colors
+    'nt_sidebar_button_text_color_active' => '#ffffff',
+    'nt_sidebar_button_text_color_hover'  => '#ffffff',
+    
+    'nt_sidebar_button_icon_color_active' => '#ffffff',
+    'nt_sidebar_button_icon_color_hover'  => '#ffffff',
+
+    
     /*
     |--------------------------------------------------------------------------
     | Sidebar
@@ -243,6 +318,25 @@ return [
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
     'right_sidebar_scrollbar_auto_hide' => 'l',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Floating Right Sidebar Button
+    |--------------------------------------------------------------------------
+    |
+    | Custom settings for the floating quick access button that toggles
+    | the control sidebar.
+    |
+    */
+    
+    'right_sidebar_floating' => true, // Show or hide floating button
+    'right_sidebar_floating_color' => '#247555', // Bootstrap bg-* class or HEX color
+    'right_sidebar_floating_icon' => 'fas fa-sliders-h', // Font Awesome icon class
+    'right_sidebar_floating_icon_color' => '#ffffff', // Icon color (HEX or Bootstrap text-* class)
+    'right_sidebar_floating_icon_image' => null, // Optional: image path (overrides icon)
+    'right_sidebar_floating_zindex' => 1020, // Layering control (below modals)
+    
 
     /*
     |--------------------------------------------------------------------------
