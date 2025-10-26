@@ -67,7 +67,7 @@
         </div>
 
         {{-- Fixed Footer --}}
-        <div class="mt-auto">
+        <div class="mt-auto" style="padding-bottom: 15px;">
             <hr class="border-secondary mb-3">
             <button type="button"
                     class="btn btn-danger w-100 rounded-4 fw-semibold"
@@ -76,5 +76,6 @@
                 <i class="fas fa-times mr-1"></i> Close Menu
             </button>
         </div>
+        
     </div>
 </aside>
