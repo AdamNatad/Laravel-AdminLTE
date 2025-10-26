@@ -67,7 +67,7 @@
         </div>
 
         {{-- Fixed Footer --}}
-        <div class="mt-auto mb-2">
+        <div class="mt-auto">
             <hr class="border-secondary mb-3">
             <button type="button"
                     class="btn btn-danger w-100 rounded-4 fw-semibold"
