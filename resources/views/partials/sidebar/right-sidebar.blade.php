@@ -67,13 +67,13 @@
         </div>
 
         {{-- Fixed Footer --}}
-        <div class="mt-auto">
+        <div class="mt-auto mb-2">
             <hr class="border-secondary mb-3">
             <button type="button"
                     class="btn btn-danger w-100 rounded-4 fw-semibold"
                     data-widget="control-sidebar"
                     data-slide="true">
-                <i class="fas fa-times me-1"></i> Close Menu
+                <i class="fas fa-times mr-1"></i> Close Menu
             </button>
         </div>
     </div>
