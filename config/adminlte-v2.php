@@ -410,7 +410,7 @@ return [
     'right_sidebar_floating_icon' => 'fas fa-sliders-h', // Font Awesome icon class
     'right_sidebar_floating_icon_color' => '#ffffff', // Icon color (HEX or Bootstrap text-* class)
     'right_sidebar_floating_icon_image' => null, // Optional: image path (overrides icon)
-    'right_sidebar_floating_zindex' => 1020, // Layering control (below modals)
+    'right_sidebar_floating_zindex' => 1034, // Layering control (below modals)
     
 
     /*

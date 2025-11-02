@@ -7,7 +7,7 @@
             position: fixed;
             bottom: 25px;
             right: 25px;
-            z-index: {{ config('adminlte.right_sidebar_floating_zindex', 1020) }};
+            z-index: {{ config('adminlte.right_sidebar_floating_zindex', 1034) }};
             opacity: 0;
             animation: fadeInFloating 0.6s ease-in forwards;
             transition: opacity 0.3s ease-in-out;

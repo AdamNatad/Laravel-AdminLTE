@@ -8,7 +8,7 @@
         bottom: 0;
         height: 100vh !important;
         border-left: 1px solid rgba(255,255,255,0.1);
-        z-index: 1020 !important; /* BELOW navbar (navbar is 1030) */
+        z-index: 1035 !important; /* BELOW navbar (navbar is 1030) */
         color: #fff;
         overflow-y: auto;
         padding-top: 56px; /* prevent overlap with navbar */
