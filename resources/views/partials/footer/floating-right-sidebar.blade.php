@@ -5,7 +5,7 @@
     <style>
         #floating-sidebar-wrapper {
             position: fixed;
-            bottom: 25px;
+            bottom: 65px;
             right: 25px;
             z-index: {{ config('adminlte.right_sidebar_floating_zindex', 1034) }};
             opacity: 0;
