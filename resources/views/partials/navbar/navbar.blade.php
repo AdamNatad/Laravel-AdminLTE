@@ -1,186 +1,227 @@
 @inject('layoutHelper', 'AdamNatad\LaravelAdminLte\Helpers\LayoutHelper')
 
+@php
+    /**
+     * ============================================================
+     *  Navbar Configuration Variables
+     *  ------------------------------------------------------------
+     *  This section loads dynamic configuration values from
+     *  config('adminlte.*') and assigns them to PHP variables
+     *  for easier reference below.
+     * ============================================================
+     */
+
+    // Color configurations
+    $navbarBg = config('adminlte.nt_navbar_hexbg_color_hex', '#343A40');
+    $navbarTextColor = config('adminlte.nt_topnav_textcolor_color', '#ffffff');
+    $navbarHoverColor = config('adminlte.nt_navbar_mobile_text_hover_color', '#00bfff');
+    $mobileTextColor = config('adminlte.nt_navbar_mobile_text_color', '#ffffff');
+
+    // Logo and text configurations
+    $mobileLogo = config('adminlte.nt_navbar_mobile_logo', '/images/NatadTechBanner.svg');
+    $mobileTextEnabled = config('adminlte.nt_navbar_mobile_text', false);
+    $mobileTextLabel = strip_tags(config('adminlte.nt_navbar_mobile_text_label', 'NatadTech'));
+
+    // Mobile text size and padding configuration
+    $mobileTextSize = match(config('adminlte.nt_navbar_mobile_text_size')) {
+        1 => '1.4rem',
+        2 => '1.0rem',
+        3 => '0.5rem',
+        default => '1.4rem',
+    };
+
+    $mobileTextPaddingTop = match(config('adminlte.nt_navbar_mobile_text_size')) {
+        1 => '3.5px',
+        2 => '8.5px',
+        3 => '15.5px',
+        default => '3.5px',
+    };
+@endphp
+
+{{-- ============================================================
+     Navbar Dynamic Styling
+     ------------------------------------------------------------
+     The CSS below uses variables and dynamic Blade data to style
+     the navbar and mobile logo/text elements based on configuration.
+============================================================ --}}
 <style>
-/* Root variables */
+/* --------------------------------------------------------------
+   Root Variables
+   -------------------------------------------------------------- */
 :root {
-    --nt-navbar-mobile-text-hover-color: {{ config('adminlte.nt_navbar_mobile_text_hover_color', '#00bfff') }} !important;
+    --nt-navbar-mobile-text-hover-color: {{ $navbarHoverColor }} !important;
 }
 
-/* Container for image or text (hidden by default) */
+/* --------------------------------------------------------------
+   Mobile Brand Container
+   Hidden by default and visible only on mobile viewports.
+-------------------------------------------------------------- */
 .mobile-brand-image-logo-reveal-container {
     display: none;
     height: 40px;
     margin-top: -2px;
     text-align: center;
 
-    /* Flex centering for content */
+    /* Flexbox centering for logo/text */
     align-items: center;
     justify-content: center;
-
-    /*
-    width: auto;
-   
-    
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  
-    width: 100px;
-    */
 }
 
-/* Logo image background */
+/* --------------------------------------------------------------
+   Mobile Brand Logo
+   Background logo displayed on mobile when text is disabled.
+-------------------------------------------------------------- */
 .mobile-brand-image-logo-reveal-container-link {
     width: 100px;
     height: 100%;
     display: inline-block;
-    background: url('{{ config('adminlte.nt_navbar_mobile_logo', '/images/NatadTechBanner.svg') }}') no-repeat center/contain;
+    background: url('{{ $mobileLogo }}') no-repeat center/contain;
 }
 
-/* Brand text display (when logo is disabled) */
+/* --------------------------------------------------------------
+   Mobile Brand Text
+   Appears only if text mode is enabled in configuration.
+-------------------------------------------------------------- */
 .mobile-brand-image-logo-reveal-container-text {
     display: none;
     height: 100%;
-
-    font-size: {{
-        config('adminlte.nt_navbar_mobile_text_size') == 1 ? '1.4rem' :
-        (config('adminlte.nt_navbar_mobile_text_size') == 2 ? '1.0rem' :
-        (config('adminlte.nt_navbar_mobile_text_size') == 3 ? '0.5rem' : '1.4rem'))
-    }};
-
+    font-size: {{ $mobileTextSize }};
     font-weight: 600;
     letter-spacing: 0.5px;
     white-space: nowrap;
-
-    padding-top: {{
-        config('adminlte.nt_navbar_mobile_text_size') == 1 ? '3.5px' :
-        (config('adminlte.nt_navbar_mobile_text_size') == 2 ? '8.5px' :
-        (config('adminlte.nt_navbar_mobile_text_size') == 3 ? '15.5px' : '3.5px'))
-    }};
-
-    padding-left: 0px;
-    color: {{ config('adminlte.nt_navbar_mobile_text_color', '#ffffff') }} !important;
+    padding-top: {{ $mobileTextPaddingTop }};
+    color: {{ $mobileTextColor }} !important;
     transition: color 0.2s ease-in-out;
 }
 
-/* Hover effect from config */
+/* Hover color effect for brand text */
 .mobile-brand-image-logo-reveal-container-text:hover {
     color: var(--nt-navbar-mobile-text-hover-color) !important;
 }
 
-/* Topnav link colors */
+/* --------------------------------------------------------------
+   Navbar Link Colors
+-------------------------------------------------------------- */
 .main-header.navbar .nav-link {
-    color: {{ config('adminlte.nt_topnav_textcolor_color', '#ffffff') }} !important;
+    color: {{ $navbarTextColor }} !important;
+    transition: color 0.2s ease-in-out;
 }
 
 .main-header.navbar .nav-link:hover {
-    color: {{ config('adminlte.nt_topnav_textcolor_hover', '#00bfff') }} !important;
+    color: {{ $navbarHoverColor }} !important;
 }
 
-/* IDJOT DONT USE THIS THIS IS FOR MENU LINKS BOGO ADAM
-.main-header.navbar .dropdown-menu a {
-    color: {{ config('adminlte.nt_topnav_textcolor_color', '#ffffff') }} !important;
-}
-
-.main-header.navbar .dropdown-menu a:hover {
-    color: {{ config('adminlte.nt_topnav_textcolor_hover', '#00bfff') }} !important;
-}
-*/
-
-/* Make it visible on mobile screens only */
+/* --------------------------------------------------------------
+   Mobile Visibility Rules
+-------------------------------------------------------------- */
 @media (max-width: 991px) {
-    .mobile-brand-image-logo-reveal-container {
-        display: flex !important;
-    }
-
+    .mobile-brand-image-logo-reveal-container,
     .mobile-brand-image-logo-reveal-container-text {
         display: flex !important;
     }
 }
 
+/* --------------------------------------------------------------
+   Utility Classes
+-------------------------------------------------------------- */
 .nt-full-name-right {
     margin-top: -4.5px;
 }
 </style>
 
+{{-- ============================================================
+     Navbar Markup
+     ------------------------------------------------------------
+     The main navigation bar dynamically adapts colors and content
+     based on the AdminLTE configuration settings.
+============================================================ --}}
 <nav class="main-header navbar
     {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}
     {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}"
-    {{-- Navbar Changebackground color here --}}
-    @if(config('adminlte.nt_navbar_hexbg_color_use', true) || config('adminlte.nt_topnav_textcolor_handle', false))
-        style="
-            {{ config('adminlte.nt_navbar_hexbg_color_use', true) ? 'background-color: ' . config('adminlte.nt_navbar_hexbg_color_hex', '#343A40') . ' !important;' : '' }}
-            {{ config('adminlte.nt_topnav_textcolor_handle', false) ? 'color: ' . config('adminlte.nt_topnav_textcolor_color', '#ffffff') . ' !important;' : '' }}
-        "
+    {{-- Inline dynamic styling for background and text color --}}
+    @if(config('adminlte.nt_navbar_hexbg_color_use', true))
+        style="background-color: {{ $navbarBg }} !important; color: {{ $navbarTextColor }} !important;"
     @endif
 >
-    {{-- Navbar left links --}}
+    {{-- ----------------------------------------------------------
+         Left Side Navigation
+    ---------------------------------------------------------- --}}
     <ul class="navbar-nav">
-        {{-- Left sidebar toggler link --}}
+        {{-- Left sidebar toggler button --}}
         @include('adminlte::partials.navbar.menu-item-left-sidebar-toggler')
 
-        {{-- Mobile Image Reveal Container --}}
+        {{-- Mobile logo or text container --}}
         <a href="/" class="mobile-brand-image-logo-reveal-container">
-            @if(config('adminlte.nt_navbar_mobile_text', false))
+            @if($mobileTextEnabled)
+                {{-- Display configured mobile text --}}
                 <div class="mobile-brand-image-logo-reveal-container-text {{ config('adminlte.classes_brand_text', '') }}">
-                    {{ strip_tags(config('adminlte.nt_navbar_mobile_text_label', 'NatadTech')) }}
+                    {{ $mobileTextLabel }}
                 </div>
             @else
+                {{-- Display configured mobile logo --}}
                 <div class="mobile-brand-image-logo-reveal-container-link"></div>
             @endif
         </a>
 
-        {{-- Configured left links --}}
+        {{-- Dynamic left menu items --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-left'), 'item')
 
-        {{-- Custom left links --}}
+        {{-- Custom left content section (optional) --}}
         @yield('content_top_nav_left')
     </ul>
 
-    {{-- Navbar right links --}}
+    {{-- ----------------------------------------------------------
+         Right Side Navigation
+    ---------------------------------------------------------- --}}
     <ul class="navbar-nav ml-auto">
-        {{-- Custom right links --}}
+        {{-- Custom right content section (optional) --}}
         @yield('content_top_nav_right')
 
-        {{-- Configured right links --}}
+        {{-- Configured right-side menu items --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
-        {{-- User menu link --}}
+        {{-- ------------------------------------------------------
+             Authenticated User Menu
+        ------------------------------------------------------ --}}
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
+                {{-- Dropdown user menu --}}
                 @include('adminlte::partials.navbar.menu-item-dropdown-user-menu')
             @else
+                {{-- Simple logout link --}}
                 @include('adminlte::partials.navbar.menu-item-logout-link')
             @endif
         @endif
 
-        {{-- Right sidebar toggler link --}} 
-        {{-- MOVED TO FOOTER AS FLOATING BUTTON
-        @if($layoutHelper->isRightSidebarEnabled())
-            @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
-        @endif
-         --}}
-         
-        {{-- Add this conditional to show "Login" button to non-logged-in users and hide "Login" button on error pages--}}
+        {{-- ------------------------------------------------------
+             Login Button for Guests
+             (Only shown if login navbar is enabled and
+             not in maintenance mode or error page)
+        ------------------------------------------------------ --}}
         @if(!Auth::check() && !app()->isDownForMaintenance() && !app()->runningUnitTests() && !isset($exception))
-            <li class="nav-item">
-                @if(config('adminlte.nt_login_navbar_enable'))
+            @if(config('adminlte.nt_login_navbar_enable'))
+                <li class="nav-item">
                     <a class="nav-link nt-non-selectable-pointer" href="/login" style="white-space: nowrap;">
                         <div style="display: inline-flex; align-items: center;">
                             <i class="fas fa-user fa-1x fa-fw mr-1" style="margin-top: -6px;"></i>
-                            {{-- Hidden Login Text --}}
                             <span class="nt-non-selectable-pointer" style="margin-top: -4px;">
                                 {{ __('adminlte::adminlte.sign_in') }}
                             </span>
                         </div>
                     </a>
-                @endif
-            </li>
+                </li>
+            @endif
         @endif
     </ul>
 </nav>
 
-{{-- Mobile Image Reveal Container CSS 
-<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-@vite('resources/css/app/core/navbar.css', 'assets')
---}}
+{{-- ============================================================
+     External Stylesheet Option
+     ------------------------------------------------------------
+     You may optionally move this CSS to a dedicated file such as:
+     - public/css/navbar.css
+     and then include it via:
+     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+     or with Vite:
+     @vite('resources/css/app/core/navbar.css', 'assets')
+============================================================ --}}
