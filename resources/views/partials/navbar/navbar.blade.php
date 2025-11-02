@@ -167,7 +167,7 @@
                 @if(config('adminlte.nt_login_navbar_enable'))
                     <a class="nav-link nt-non-selectable-pointer" href="/login" style="white-space: nowrap;">
                         <div style="display: inline-flex; align-items: center;">
-                            <i class="fas fa-circle-user fa-2x fa-fw" style="margin-top: -6px;"></i>
+                            <i class="fas fa-user fa-1x fa-fw mr-1" style="margin-top: -6px;"></i>
                             {{-- Hidden Login Text --}}
                             <span class="nt-non-selectable-pointer" style="margin-top: -4px;">
                                 {{ __('adminlte::adminlte.sign_in') }}
